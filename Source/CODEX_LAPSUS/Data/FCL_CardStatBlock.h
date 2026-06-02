@@ -1,18 +1,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Data/FCL_CardRowBase.h"
-#include "Header/CL_Define.h"
-#include "FCL_EquipmentCard.generated.h"
+#include "FCL_CardStatBlock.generated.h"
 
 USTRUCT(BlueprintType)
-struct CODEX_LAPSUS_API FCL_EquipmentCard : public FCL_CardRowBase
+struct CODEX_LAPSUS_API FCL_CardStatBlock
 {
 	GENERATED_BODY()
 
 public:
-	FCL_EquipmentCard() { CardType = ECL_CardType::Equipment; }
-
 	// 힘 - 공격력
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	int32 Strength = 0;
@@ -32,4 +28,21 @@ public:
 	// 손재주 - 코스트 회복량
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	int32 Dexterity = 0;
+
+	FCL_CardStatBlock& operator+=(const FCL_CardStatBlock& Other)
+	{
+		Strength += Other.Strength;
+		Agility += Other.Agility;
+		Intelligence += Other.Intelligence;
+		HP += Other.HP;
+		Dexterity += Other.Dexterity;
+		return *this;
+	}
+
+	FCL_CardStatBlock operator+(const FCL_CardStatBlock& Other) const
+	{
+		FCL_CardStatBlock Result = *this;
+		Result += Other;
+		return Result;
+	}
 };

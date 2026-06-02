@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "CL_CharacterBase.generated.h"
+#include "CL_UnitBase.generated.h"
 
 UCLASS()
-class CODEX_LAPSUS_API ACL_CharacterBase : public AActor
+class CODEX_LAPSUS_API ACL_UnitBase : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ACL_CharacterBase();
+	ACL_UnitBase();
 
 protected:
 	// Called when the game starts or when spawned

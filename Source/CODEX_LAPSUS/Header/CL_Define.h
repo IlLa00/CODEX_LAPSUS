@@ -9,6 +9,97 @@
 class ACL_SlotBase;
 class ACL_CharacterBase;
 
+UENUM()
+enum ECL_SLotType
+{
+	NoSlot,
+	DefaultSlot,
+	MovableSlot,
+	ActiveSlot,
+	EnemySlot,
+	AllySlot,
+	MovementOverlaySlot,
+	SpellSlot
+};
+
+UENUM()
+enum ECL_PassiveAbilityUseMoment
+{
+	OnTurnStart,
+	OnMoved,
+	BeforeAttack,
+	AfterAttack,
+	OnKill,
+	OnTurnEnd,
+};
+
+UENUM()
+enum ECL_PassiveAbilityTarget
+{
+	Self,
+	CharactersInRange,
+	HitCharacters,
+};
+
+UENUM()
+enum ECL_MovementType
+{
+	Move_Walk,
+	Move_Fly,
+	Move_Immobile,
+};
+
+UENUM()
+enum ECL_Equipment
+{
+	None,
+	Weapon,
+	Shield,
+	Armor,
+	Helmet,
+	Shoes,
+	Necklace,
+	Misc
+};
+
+UENUM()
+enum ECL_Element
+{
+	Normal,
+	Fire,
+	Earth,
+	Air,
+	Water
+};
+
+UENUM()
+enum ECL_BattleState
+{
+	Initialization,
+	DeploymentPhase,
+	WaitingForPlayerAction,
+	PlayerIsCastingSpell,
+	PlayerIsPlaying,
+	WaitingForEnemyAction,
+	EnemyIsPlaying,
+	Victory,
+	Defeat,
+	Over
+};
+
+UENUM()
+enum ECL_BattleCursorType
+{
+	Default,
+	Walk,
+	Fly,
+	MeleeAttack,
+	RangeAttack,
+	BrokenRangeAttack,
+	Spell,
+	Wait
+};
+
 USTRUCT()
 struct FCL_SlotSPrite
 {

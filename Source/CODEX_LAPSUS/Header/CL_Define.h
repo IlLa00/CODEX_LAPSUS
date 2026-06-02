@@ -6,6 +6,9 @@
 #include "PaperSpriteComponent.h"
 #include "CL_Define.generated.h"
 
+class ACL_SlotBase;
+class ACL_CharacterBase;
+
 USTRUCT()
 struct FCL_SlotSPrite
 {
@@ -42,4 +45,111 @@ public:
 	int32 Power;
 	UPROPERTY()
 	int32 Knowledge;
+};
+
+USTRUCT()
+struct FCL_ListOfSlots
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY()
+	TArray<TObjectPtr<ACL_SlotBase>> OverlaySlots;
+};
+
+USTRUCT()
+struct FCL_PlayerCharacterData
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY()
+	TArray<TObjectPtr<ACL_CharacterBase>> Characters;
+
+	UPROPERTY()
+	int32 Stack;
+};
+
+USTRUCT()
+struct FCL_EnemyCharacterData
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY()
+	TArray<TObjectPtr<ACL_CharacterBase>> Characters;
+
+	UPROPERTY()
+	int32 Stack;
+};
+
+USTRUCT()
+struct FCL_DamageData
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY()
+	int32 Damage;
+
+	UPROPERTY()
+	int32 MinDamage;
+
+	UPROPERTY()
+	int32 MaxDamage;
+
+	UPROPERTY()
+	float DamageModifier;
+
+	//UPROPERTY()
+	//Element;
+
+
+};
+
+USTRUCT()
+struct FCL_ElementReductions
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY()
+	float Normal;
+
+	UPROPERTY()
+	float Fire;
+
+	UPROPERTY()
+	float Earth;
+
+	UPROPERTY()
+	float Air;
+
+	UPROPERTY()
+	float Water;
+};
+
+USTRUCT()
+struct FCL_CharacterStatBuff
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY()
+	float Attack;
+
+	UPROPERTY()
+	float Defense;
+
+	UPROPERTY()
+	float MinDamage;
+
+	UPROPERTY()
+	float MaxDamage;
+
+	UPROPERTY()
+	float Ammo;
+
+	UPROPERTY()
+	float MovementRange;
 };

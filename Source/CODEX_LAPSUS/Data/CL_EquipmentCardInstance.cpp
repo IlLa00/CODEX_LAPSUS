@@ -10,8 +10,9 @@ void UCL_EquipmentCardInstance::InitFromRow(const FCL_CardRowBase& Row)
 
 	const FCL_EquipmentCard& EquipRow = static_cast<const FCL_EquipmentCard&>(Row);
 	Stats.Strength = EquipRow.Strength;
-	Stats.Agility = EquipRow.Agility;
-	Stats.Intelligence = EquipRow.Intelligence;
-	Stats.HP = EquipRow.HP;
 	Stats.Dexterity = EquipRow.Dexterity;
+	Stats.Constitution = EquipRow.Constitution;
+	Stats.Resistance = EquipRow.Resistance;
+	Stats.Luck = EquipRow.Luck;
+	Stats.Critical = EquipRow.Critical;
 }

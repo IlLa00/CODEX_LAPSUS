@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "Data/FCL_CardStatBlock.h"
+#include "Data/FCL_StatBlock.h"
 #include "CL_CardSubsystem.generated.h"
 
 class UCL_CardInstance;
@@ -59,7 +59,7 @@ public:
 
 	// 장착 카드 스탯 합산
 	UFUNCTION(BlueprintCallable, Category = "Card")
-	FCL_CardStatBlock GetEquippedStatTotal(int32 CharIndex) const;
+	FCL_StatBlock GetEquippedStatTotal(int32 CharIndex) const;
 
 	// C++ 전용 (const 참조 반환이라 UFUNCTION 비노출)
 	const TArray<FCL_OwnedCard>& GetOwnedCards() const { return OwnedCards; }

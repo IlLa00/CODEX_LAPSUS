@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Data/CL_CardInstance.h"
-#include "Data/FCL_CardStatBlock.h"
+#include "Data/FCL_StatBlock.h"
 #include "CL_EquipmentCardInstance.generated.h"
 
 UCLASS(BlueprintType)
@@ -15,9 +15,9 @@ class CODEX_LAPSUS_API UCL_EquipmentCardInstance : public UCL_CardInstance
 public:
 	virtual void InitFromRow(const FCL_CardRowBase& Row) override;
 
-	virtual FCL_CardStatBlock GetStatContribution() const override { return Stats; }
+	virtual FCL_StatBlock GetStatContribution() const override { return Stats; }
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Equipment")
-	FCL_CardStatBlock Stats;
+	FCL_StatBlock Stats;
 };

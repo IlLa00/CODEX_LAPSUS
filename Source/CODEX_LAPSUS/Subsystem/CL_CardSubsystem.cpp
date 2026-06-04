@@ -99,9 +99,9 @@ bool UCL_CardSubsystem::UnequipCard(int32 CharIndex, UCL_CardInstance* Card)
 	return true;
 }
 
-FCL_CardStatBlock UCL_CardSubsystem::GetEquippedStatTotal(int32 CharIndex) const
+FCL_StatBlock UCL_CardSubsystem::GetEquippedStatTotal(int32 CharIndex) const
 {
-	FCL_CardStatBlock Total;
+	FCL_StatBlock Total;
 
 	if (const FCL_EquippedSet* Set = EquippedByCharacter.Find(CharIndex))
 	{

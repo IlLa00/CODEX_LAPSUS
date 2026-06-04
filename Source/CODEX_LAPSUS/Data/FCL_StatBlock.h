@@ -1,18 +1,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Data/FCL_CardRowBase.h"
-#include "Header/CL_Define.h"
-#include "FCL_EquipmentCard.generated.h"
+#include "FCL_StatBlock.generated.h"
 
+// 캐릭터·카드가 공유하는 원시 스탯 묶음 (기획서 '스탯 종류').
+// 캐릭터 기본 스탯 + 장착 카드 기여분이 같은 타입으로 합산된다.
 USTRUCT(BlueprintType)
-struct CODEX_LAPSUS_API FCL_EquipmentCard : public FCL_CardRowBase
+struct CODEX_LAPSUS_API FCL_StatBlock
 {
 	GENERATED_BODY()
 
 public:
-	FCL_EquipmentCard() { CardType = ECL_CardType::Equipment; }
-
 	// 힘(STR) - 공격력 관련
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	int32 Strength = 0;
@@ -36,4 +34,22 @@ public:
 	// 크리티컬 - 치명타 확률 관련
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	int32 Critical = 0;
+
+	FCL_StatBlock& operator+=(const FCL_StatBlock& Other)
+	{
+		Strength += Other.Strength;
+		Dexterity += Other.Dexterity;
+		Constitution += Other.Constitution;
+		Resistance += Other.Resistance;
+		Luck += Other.Luck;
+		Critical += Other.Critical;
+		return *this;
+	}
+
+	FCL_StatBlock operator+(const FCL_StatBlock& Other) const
+	{
+		FCL_StatBlock Result = *this;
+		Result += Other;
+		return Result;
+	}
 };

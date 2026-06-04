@@ -74,7 +74,18 @@ void UCL_CardEntryWidget::NativeOnDragDetected(const FGeometry& InGeometry, cons
 	Op->Card = BoundItem->Card;
 	Op->SourceZone = BoundItem->Zone;
 	Op->SourceCharIndex = BoundItem->CharIndex;
-	Op->DefaultDragVisual = this;
+
+	// 원본(this)은 리스트에 그대로 남기고, 커서를 따라다닐 드래그 비주얼은 별도 복제본을 만든다.
+	// (DefaultDragVisual = this 로 두면 원본 SWidget이 데코레이터로 옮겨가 리스트에서 사라질 수 있다.)
+	UCL_CardEntryWidget* Visual = CreateWidget<UCL_CardEntryWidget>(GetOwningPlayer(), GetClass());
+	if (Visual)
+	{
+		Visual->NativeOnListItemObjectSet(BoundItem);
+		Op->DefaultDragVisual = Visual;
+	}
+
+	// 드래그 중 원본 슬롯을 반투명 처리/복원하기 위해 원본 엔트리를 오퍼레이션에 실어 보낸다.
+	Op->SourceEntry = this;
 	Op->Pivot = EDragPivot::MouseDown;
 
 	OutOperation = Op;

@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "Header/CL_Define.h"
-#include "Data/FCL_CardStatBlock.h"
+#include "Data/FCL_StatBlock.h"
 #include "CL_CardInstance.generated.h"
 
 struct FCL_CardRowBase;
@@ -20,7 +20,7 @@ public:
 
 	virtual void InitFromRow(const FCL_CardRowBase& Row);
 
-	virtual FCL_CardStatBlock GetStatContribution() const { return FCL_CardStatBlock(); }
+	virtual FCL_StatBlock GetStatContribution() const { return FCL_StatBlock(); }
 
 	UFUNCTION(BlueprintCallable, Category = "Card")
 	ECL_CardType GetCardType() const { return CardType; }

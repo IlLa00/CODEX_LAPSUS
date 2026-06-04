@@ -50,19 +50,6 @@ enum ECL_MovementType
 };
 
 UENUM()
-enum ECL_Equipment
-{
-	None,
-	Weapon,
-	Shield,
-	Armor,
-	Helmet,
-	Shoes,
-	Necklace,
-	Misc
-};
-
-UENUM()
 enum ECL_Element
 {
 	Normal,
@@ -70,6 +57,23 @@ enum ECL_Element
 	Earth,
 	Air,
 	Water
+};
+
+// 카드 종류 - 새 종류 추가 시 여기에 확장하고 CreateFromRow 팩토리에 매핑 등록
+UENUM(BlueprintType)
+enum class ECL_CardType : uint8
+{
+	Equipment,
+	Skill,
+	Tool
+};
+
+// 덱 편집 UI에서 카드가 위치한 영역 (드래그 출발/도착 판정용)
+UENUM(BlueprintType)
+enum class ECL_CardZone : uint8
+{
+	Owned,
+	Equipped
 };
 
 UENUM()
